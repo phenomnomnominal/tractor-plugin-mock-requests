@@ -1,6 +1,6 @@
 {
   "name": "tractor-plugin-mock-requests",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Craig Spence <craigspence0@gmail.com>",
   "repository": {
     "type": "git",
@@ -10,21 +10,19 @@
     "url": "https://github.com/phenomnomnominal/tractor-plugin-mock-requests/issues",
     "email": "craigspence0@gmail.com"
   },
-  "main": "dist/index.js",
+  "main": "dist/server/index.js",
   "watch": {
     "build": "src/**/*.js"
   },
   "scripts": {
     "prepublish": "npm run build",
-    "build": "npm run lint && npm run cover && npm run compile && npm run bundle",
-    "bundle": "npm run bundle:fetch && npm run bundle:xhr",
-    "bundle:fetch": "webpack src/script-entries/shim-fetch.js dist/scripts/shim-fetch.js",
-    "bundle:xhr": "webpack src/script-entries/shim-xhr.js dist/scripts/shim-xhr.js",
-    "compile": "babel src --out-dir dist --ignore *.spec.js,src/script-entries",
-    "cover": "istanbul cover --config .istanbulrc.json node_modules/mocha/bin/_mocha -- --opts ./.mocharc src/*.spec.js",
-    "coveralls": "cat ./reports/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "build": "npm run lint && npm run cover && npm run compile && npm run bundle:server && npm run bundle:client",
+    "bundle:client": "webpack --config webpack.client.config.js",
+    "bundle:server": "webpack --config webpack.server.config.js",
+    "compile": "babel src/server/ --out-dir dist/server/ --ignore *.spec.js,src/server/scripts",
+    "cover": "istanbul cover --config .istanbulrc.json node_modules/mocha/bin/_mocha -- --opts ./.mocharc 'src/**/*.spec.js'",
     "lint": "eslint src/**/*.js; true",
-    "test": "mocha --opts ./.mocharc src/*.spec.js",
+    "test": "mocha --opts ./.mocharc 'src/server/**/*.spec.js'",
     "watch": "npm-watch"
   },
   "license": "MIT",
@@ -32,25 +30,43 @@
     "node": ">=0.10"
   },
   "devDependencies": {
-    "babel-cli": "6.24.0",
-    "babel-core": "6.24.0",
-    "babel-eslint": "7.2.1",
-    "babel-preset-es2015": "6.24.0",
-    "babel-preset-stage-0": "6.22.0",
-    "babel-register": "6.24.0",
-    "chai": "3.5.0",
-    "coveralls": "2.13.0",
-    "dirty-chai": "1.2.2",
-    "eslint": "3.19.0",
-    "fetch-mock": "5.9.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.6.1",
+    "html-loader": "^0.5.1",
+    "ineeda": "^0.11.0",
     "istanbul": "1.0.0-alpha.2",
-    "mocha": "3.2.0",
-    "npm-watch": "0.1.8",
-    "sinon": "2.1.0",
-    "sinon-chai": "2.9.0",
-    "webpack": "2.3.3"
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.5.0",
+    "ng-annotate-loader": "^0.6.1",
+    "npm-watch": "^0.2.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0",
+    "webpack": "^3.5.6"
   },
   "dependencies": {
-    "fake-xml-http-request": "^1.4.0"
+    "body-parser": "^1.17.2",
+    "camel-case": "^3.0.0",
+    "cheerio": "^0.22.0",
+    "dedent": "^0.7.0",
+    "express": "^4.15.4",
+    "express-http-proxy": "^1.0.6",
+    "fake-xml-http-request": "^1.6.0",
+    "fetch-mock": "^5.12.2",
+    "pascal-case": "^2.0.1",
+    "pem": "^1.10.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "tractor-error-handler": "^0.2.0",
+    "tractor-file-structure": "^0.4.0-beta.0",
+    "tractor-logger": "^0.1.0"
   }
 }
