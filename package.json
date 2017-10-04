@@ -57,7 +57,7 @@
     "tractor-error-handler": "^0.2.3",
     "tractor-file-structure": "^0.5.3",
     "tractor-logger": "^0.1.0",
-    "url-loader": "^0.5.9",
+    "url-loader": "^0.6.1",
     "webpack": "^3.6.0"
   },
   "dependencies": {
