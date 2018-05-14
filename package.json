@@ -70,7 +70,7 @@
     "express": "^4.16.2",
     "express-http-proxy": "^1.0.7",
     "fake-xml-http-request": "^1.6.0",
-    "fetch-mock": "^5.13.1",
+    "fetch-mock": "^6.4.2",
     "pascal-case": "^2.0.1",
     "pem": "^1.12.3",
     "request": "^2.83.0",
