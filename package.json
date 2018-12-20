@@ -81,7 +81,7 @@
     "npm-watch": "^0.4.0",
     "rimraf": "^2.6.2",
     "url-loader": "^1.1.1",
-    "webpack": "^4.20.2",
+    "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2"
   }
 }
