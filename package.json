@@ -50,7 +50,7 @@
     "fake-xml-http-request": "^1.6.0",
     "fetch-mock": "^5.13.1",
     "pascal-case": "^2.0.1",
-    "pem": "^1.13.1",
+    "pem": "^1.14.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5"
   },
